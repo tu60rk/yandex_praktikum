@@ -1,3 +1,7 @@
+# Flake8
+### Как проверить, что flake8 доволен/не доволен
+- pre-commit run flake8 --all-files
+
 # Как пользоваться Git- [Как сделать новый коммит](./commmit_help.md)
 
 
