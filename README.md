@@ -75,6 +75,12 @@ CREATE UNIQUE INDEX film_work_person_idx ON content.person_film_work (film_work_
 
 \copy content.film_work from '/output.csv' with delimiter ',' NULL '';
 
+### Статьи
+
+рассматривает работуEXPLAINв PostgreSQL - https://habr.com/ru/post/275851/ 
+документацию по использованию explain - https://postgrespro.ru/docs/postgresql/12/using-explain
+книга про индексы - https://use-the-index-luke.com
+
 # Docker
 ### Запуск postgres
 docker run -d \
