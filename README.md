@@ -62,6 +62,11 @@ CREATE UNIQUE INDEX film_work_person_idx ON content.person_film_work (film_work_
 Важно!
 Чтобы использовать индекс, нужно составить запрос с ограничением по левой колонке, указанной в индексе film_work_id — композитный индекс начнёт искать данные по лидирующей колонке, то есть слева направо.
 
+### Узнать размер таблицы
+\dt+ content.film_work 
+### Узнать размер индекса
+\di+ content.film_work_creation_date_idx 
+
 # Docker
 ### Запуск postgres
 docker run -d \
