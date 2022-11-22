@@ -73,6 +73,8 @@ CREATE UNIQUE INDEX film_work_person_idx ON content.person_film_work (film_work_
 ### Сохранить данные из таблицы в файл
 \copy (select * from content.film_work) to '/output.csv' with csv
 
+\copy content.film_work from '/output.csv' with delimiter ',' NULL '';
+
 # Docker
 ### Запуск postgres
 docker run -d \
