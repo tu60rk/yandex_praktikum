@@ -17,6 +17,51 @@ ALTER ROLE <необходимая_роль> SET search_path TO content,public;
 Пример запуска БД с командами:
 psql -h 127.0.0.1 -U app -d movies_database -f movies_database.ddl 
 
+-- Устанавливаем расширения для генерации UUID
+CREATE EXTENSION "uuid-ossp";
+
+-- Генерируем данные в интервале с 1900 по 2021 год с шагом в час. В итоге сгенерируется 1060681 записей
+
+INSERT INTO content.film_work (id, title, type, creation_date, rating) SELECT uuid_generate_v4(), 'some name', case when RANDOM() < 0.3 THEN 'movie' ELSE 'tv_show' END , date::DATE, floor(random() * 100)
+FROM generate_series(
+  '1900-01-01'::DATE,
+  '2021-01-01'::DATE,
+  '1 hour'::interval
+) date; 
+
+### EXPLAIN ANALYZE
+EXPLAIN ANALYZE SELECT * FROM content.film_work WHERE creation_date = '2020-04-01'; 
+
+ Gather  (cost=1000.00..17461.78 rows=24 width=156) (actual time=32.744..35.865 rows=24 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   ->  Parallel Seq Scan on film_work  (cost=0.00..16459.38 rows=10 width=156) (actual time=29.025..29.191 rows=8 loops=3)
+         Filter: (creation_date = '2020-04-01'::date)
+         Rows Removed by Filter: 353552
+ Planning time: 0.161 ms
+ Execution time: 36.109 ms
+(8 rows)
+
+- Gather — этап конкатенации данных из двух процессов, которые выполняли параллельное сканирование таблицы.
+- rows=24 — в результате операции было найдено всего 24 записи.
+- Workers planned: 2 — планируется использовать два процесса для выполнения запроса.
+- Workers Launched: 2 — БД использовала два процесса для обработки запроса.
+- Parallel Seq Scan — таблица film_work была полностью просканирована.
+- Filter — условие, для которого был составлен план.
+- Rows Removed by Filter — сколько строк было отфильтровано каждым процессом.
+- Planning time — время, затраченное на построение плана запроса.
+- Execution time — время в миллисекундах, за которое выполнился запрос.
+
+## Индексы
+### Уникальные
+CREATE UNIQUE INDEX some_name_idx ON some_table (some_unique_field) 
+
+### Составные
+CREATE UNIQUE INDEX film_work_person_idx ON content.person_film_work (film_work_id, person_id); 
+
+Важно!
+Чтобы использовать индекс, нужно составить запрос с ограничением по левой колонке, указанной в индексе film_work_id — композитный индекс начнёт искать данные по лидирующей колонке, то есть слева направо.
+
 # Docker
 ### Запуск postgres
 docker run -d \
