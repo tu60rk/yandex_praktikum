@@ -1,8 +1,12 @@
 # Python frameworks
 top 10
 https://hackr.io/blog/python-frameworks
+
 score
 https://hotframeworks.com/languages/python
+
+speed
+https://www.techempower.com/benchmarks/#section=data-r19&hw=ph&test=db&l=zijzen-1r&a=2&f=0-0-0-0-0-0-0-0-0-mh34-0
 
 # PostgreSQL
 PostgreSQL по умолчанию создаёт схему public — все запросы будут проходить в её рамках.
