@@ -1,5 +1,8 @@
 # Python frameworks
+top 10
 https://hackr.io/blog/python-frameworks
+score
+https://hotframeworks.com/languages/python
 
 # PostgreSQL
 PostgreSQL по умолчанию создаёт схему public — все запросы будут проходить в её рамках.
