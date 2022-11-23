@@ -1,3 +1,6 @@
+# Интерактивный гид
+https://learngitbranching.js.org/
+
 # Python frameworks
 top 10
 https://hackr.io/blog/python-frameworks
