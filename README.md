@@ -1,4 +1,8 @@
-# Интерактивный гид
+# DJANGO 
+python manage.py inspectdb
+Для ситуаций, когда необходимо создать новый проект на Django с существующей базой данных, разработчики фреймворка создали команду python manage.py inspectdb. Она возвращает содержимое models.py, основанное на схеме БД, и позволяет пропустить этап описания моделей вручную
+
+# Интерактивный GIT
 https://learngitbranching.js.org/
 
 # Python frameworks
