@@ -7,7 +7,7 @@ qlite3 -column -header db.sqlite
 ## manage.py check
 Запускает системные проверки для валидации проектов Django
 
-## Django-debug-tools
+## django-debug-toolbar
 https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
 
 ## Команты при работе с БД
@@ -35,6 +35,8 @@ speed
 https://www.techempower.com/benchmarks/#section=data-r19&hw=ph&test=db&l=zijzen-1r&a=2&f=0-0-0-0-0-0-0-0-0-mh34-0
 
 # PostgreSQL
+## 
+
 PostgreSQL по умолчанию создаёт схему public — все запросы будут проходить в её рамках.
 
 Создадим схему в БД
