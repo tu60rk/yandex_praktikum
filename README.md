@@ -1,5 +1,8 @@
-# DJANGO 
+# SQlite
+## Запуск в терминале
+qlite3 -column -header db.sqlite
 
+# DJANGO 
 
 ## manage.py check
 Запускает системные проверки для валидации проектов Django
