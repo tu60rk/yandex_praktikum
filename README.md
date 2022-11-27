@@ -1,5 +1,9 @@
 # DJANGO 
 
+
+## manage.py check
+Запускает системные проверки для валидации проектов Django
+
 ## Django-debug-tools
 https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
 
